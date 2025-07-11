@@ -1,4 +1,4 @@
 <?php
-// Минимальный index.php для Apache
+// index.php
 header("Location: proxy.php");
 exit;
