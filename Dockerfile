@@ -1,14 +1,11 @@
-# Используем официальный образ PHP с Apache
+# Используем официальный образ PHP с Apache и уже включённым cURL
 FROM php:8.2-apache
 
-# Включаем модуль mod_rewrite для Apache
+# Включаем модуль mod_rewrite (для Apache)
 RUN a2enmod rewrite
 
-# Устанавливаем cURL
-RUN docker-php-ext-install curl
-
-# Копируем proxy.php в корневую папку сервера
+# Копируем наш прокси-файл в корневую папку сервера
 COPY proxy.php /var/www/html/proxy.php
 
-# Перезапускаем Apache
+# Запускаем Apache в foreground режиме
 CMD ["apache2-foreground"]
